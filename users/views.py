@@ -8,7 +8,7 @@ def register(request):
         if form.is_valid():
             user = form.save() 
             auth_login(request , user) 
-            return redirect('blog:home')
+            return redirect('blog:blog_list')
     else:
         form = UserCreationForm() 
     return render(request , 'users/register.html' , {'form' : form})
@@ -18,7 +18,7 @@ def login(request):
         form = AuthenticationForm(request, data = request.POST)
         if form.is_valid():
             auth_login(request , form.get_user())
-            return redirect('blog:home')
+            return redirect('blog:blog_list')
     else:
         form = AuthenticationForm(request)
     return render(request , 'users/login.html' , {'form':form})

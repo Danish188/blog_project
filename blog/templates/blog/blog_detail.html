@@ -1,0 +1,15 @@
+{% extends 'blog_project/base.html' %}
+
+{% block content %}
+
+<h2>Blog Detail</h2>
+
+<p>{{ posts.author }} </p>
+<p>{{ posts.tags }} </p>
+<p>{{ posts.content }}</p>
+
+<p>
+    <a href="{% url 'blog:blog_list' %}">Go back</a>
+</p>
+
+{% endblock content %}
