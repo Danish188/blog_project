@@ -1,4 +1,8 @@
 from django.shortcuts import render , get_object_or_404
+<<<<<<< HEAD
+from .models import BlogPost , Tag , Category
+from django.views import View
+=======
 from .models import BlogPost , Category
 from django.views import View
 from .form import BlogCreateView
@@ -6,6 +10,7 @@ from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView , UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+>>>>>>> post-creation
 
 class PostList(View):
     def get(self , request):
@@ -16,6 +21,8 @@ class PostDetail(View):
     def get(self , request , pk_from_url):
         data = BlogPost.objects.get(pk = pk_from_url)
         return render(request , 'blog/blog_detail.html' , {'posts':data} )
+<<<<<<< HEAD
+=======
     
 
 class PostCreate(LoginRequiredMixin , CreateView):
@@ -41,3 +48,4 @@ class PostUpdate(LoginRequiredMixin , UpdateView):
 
 class PostDelete(DeleteView):
     model = BlogPost
+>>>>>>> post-creation
