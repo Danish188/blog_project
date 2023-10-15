@@ -1,0 +1,28 @@
+{% extends 'blog_project/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class='login-container'>
+        <h2 class='login-heading'> Create New Post </h2>
+        <form class='login-form' method='post'>
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div class="form-group pb-3">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field|add_class:'form-control' }}
+                        {% for error in field.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                </div>
+            {% endfor %}
+            {% comment %} {{ form.new_categories.label_tag }} {{ form.new_categories }}
+            {{ form.new_tags.label_tag }} {{ form.new_tags }} {% endcomment %}
+            <div class='form-group'>
+                <a href="{% url 'blog:cat_create' %}">Add Another Category</a>
+                <button type = 'submit'>Post</button>
+                <a href="{% url 'blog:blog_list' %}">Go Back</a>
+            </div>
+        </form>
+    </div>
+    
+{% endblock%}
